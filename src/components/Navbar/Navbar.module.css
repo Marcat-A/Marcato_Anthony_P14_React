@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 2em;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.logo {
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  font-size: 1.2em;
+}
+.link > a {
+  display: flex;
+  color: var(--primary-color);
+}
+
+.link > a:hover {
+  text-decoration: underline;
+}
