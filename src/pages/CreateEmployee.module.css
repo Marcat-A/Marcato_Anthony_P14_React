@@ -15,10 +15,16 @@
   gap: 1rem;
 }
 
-.firstInputs {
+.firstInputs,
+.secondInputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+.thirdInputs {
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -27,6 +33,10 @@
   margin-bottom: 1.5em;
 }
 
+.secondTitle {
+  font-size: calc(9px + 1vw);
+  color: var(--primary-color);
+}
 .inputBox {
   display: flex;
   position: relative;
@@ -89,4 +99,26 @@
 
 .dateInput:valid {
   border-color: var(--primary-color);
+}
+
+.button {
+  margin-top: 1em;
+  display: flex;
+  width: 30%;
+  background-color: transparent;
+  color: var(--primary-color);
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  font-size: 1.2em;
+  padding: 0.5rem 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
 }

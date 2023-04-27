@@ -5,7 +5,6 @@ import css from "../../pages/CreateEmployee.module.css";
 
 const DateInput = ({ name }) => {
   const [date, setDate] = useState();
-  console.log(date);
 
   return (
     <div>
