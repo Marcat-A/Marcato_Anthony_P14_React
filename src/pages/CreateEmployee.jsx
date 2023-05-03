@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./CreateEmployee.module.css";
 import DateInput from "../components/DateInput/DateInput";
-import DropdownInput from "../components/DropdownInput/DropdownInput.tsx";
+import DropdownInput from "react-marcat-dropdown/dropdown";
 
 const CreateEmployee = () => {
   const states = [
@@ -291,7 +291,7 @@ const CreateEmployee = () => {
               name="states"
               data={state}
               defaultText="Please select your state"
-              scrollBarBackgroundColor="pink"
+              scrollBarBackgroundColor="rgba(0,0,0,0.15)"
               scrollBarThumbColor="#718ae9"
               scrollBarWidth="8px"
               scrollBarRadius="10px"
