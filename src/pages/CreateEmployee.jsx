@@ -259,6 +259,33 @@ const CreateEmployee = () => {
     return department.name;
   });
 
+  let employees = [];
+
+  const handleSubmit = () => {
+    const firstname = document.getElementById("firstname").value;
+    const lastname = document.getElementById("lastname").value;
+    const birthdate = document.getElementById("birthdate").value;
+    const startdate = document.getElementById("startdate").value;
+    const street = document.getElementById("street").value;
+    const city = document.getElementById("city").value;
+    const state = document.getElementById("state").value;
+    const zipcode = document.getElementById("zipcode").value;
+    const department = document.getElementById("department").value;
+    let newEmployee = {
+      firstname: firstname,
+      lastname: lastname,
+      birthdate: birthdate,
+      startdate: startdate,
+      street: street,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      department: department,
+    };
+    employees.push(newEmployee);
+    localStorage.setItem("employees", JSON.stringify(employees));
+  };
+
   return (
     <main>
       <h1 className={css.title}>Create Employee</h1>
@@ -267,30 +294,54 @@ const CreateEmployee = () => {
           <h2 className={css.secondTitle}>Employee description</h2>
           <div className={css.firstInputs}>
             <div className={css.inputBox}>
-              <input type="text" name="firstName" required />
+              <input type="text" name="firstName" required id="firstname" />
               <span>First Name</span>
             </div>
             <div className={css.inputBox}>
-              <input type="text" name="lastName" required />
+              <input type="text" name="lastName" required id="lastname" />
               <span>Last Name</span>
             </div>
-            <DateInput name="DATE OF BIRTH" />
-            <DateInput name="START DATE" />
+            <DateInput name="DATE OF BIRTH" type="birthdate" />
+            <DateInput name="START DATE" type="startdate" />
           </div>
           <h2 className={css.secondTitle}>Employee Address</h2>
           <div className={css.secondInputs}>
             <div className={css.inputBox}>
-              <input type="text" name="street" required />
+              <input type="text" name="street" required id="street" />
               <span>Street</span>
             </div>
             <div className={css.inputBox}>
-              <input type="text" name="city" required />
+              <input type="text" name="city" required id="city" />
               <span>City</span>
             </div>
             <DropdownInput
+              personnalId="state"
               name="states"
               data={state}
-              defaultText="Please select your state"
+              defaultText="Please select the employee state"
+              scrollBarBackgroundColor="rgba(0,0,0,0.15)"
+              scrollBarThumbColor="#718ae9"
+              scrollBarWidth="8px"
+              scrollBarRadius="10px"
+              color="#718ae9"
+              borderColor="rgba(0,0,0,0.25)"
+              borderRadius="5px"
+              fontSize="1em"
+              selectBoxColor="#fff"
+              selectBoxOptionsColor="rgba(0,0,0,0.25)"
+            />
+            <div className={css.inputBox}>
+              <input type="number" name="zipcode" required id="zipcode" />
+              <span>Zip Code</span>
+            </div>
+          </div>
+          <h2 className={css.secondTitle}>Department</h2>
+          <div className={css.thirdInputs}>
+            <DropdownInput
+              name="departments"
+              data={department}
+              personnalId="department"
+              defaultText="Please select the employee department"
               scrollBarBackgroundColor="rgba(0,0,0,0.15)"
               scrollBarThumbColor="#718ae9"
               scrollBarWidth="8px"
@@ -301,16 +352,12 @@ const CreateEmployee = () => {
               selectBoxColor="#fff"
               selectBoxOptionsColor="rgba(0,0,0,0.25)"
             />
-            <div className={css.inputBox}>
-              <input type="number" name="zipcode" required />
-              <span>Zip Code</span>
-            </div>
           </div>
-          <h2 className={css.secondTitle}>Department</h2>
-          <div className={css.thirdInputs}>
-            <DropdownInput data={department} />
-          </div>
-          <button type="submit" className={css.button}>
+          <button
+            type="button"
+            className={css.button}
+            onClick={() => handleSubmit()}
+          >
             Save
           </button>
         </form>
