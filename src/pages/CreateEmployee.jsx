@@ -3,7 +3,7 @@ import css from "./CreateEmployee.module.css";
 import DateInput from "../components/DateInput/DateInput";
 import DropdownInput from "react-marcat-dropdown/dropdown";
 
-const CreateEmployee = () => {
+const CreateEmployee = ({ employees }) => {
   const states = [
     {
       name: "Alabama",
@@ -258,8 +258,6 @@ const CreateEmployee = () => {
   const department = departments.map((department) => {
     return department.name;
   });
-
-  let employees = [];
 
   const handleSubmit = () => {
     const firstname = document.getElementById("firstname").value;

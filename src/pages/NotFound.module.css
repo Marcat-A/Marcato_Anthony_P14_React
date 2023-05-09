@@ -1,0 +1,24 @@
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  max-height: 100vh;
+  font-size: 4em;
+  color: var(--primary-color);
+  font-weight: bolder;
+  margin: 20% auto 0 auto;
+}
+
+.text {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .notFound {
+    font-size: 2.5em;
+  }
+}
