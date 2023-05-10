@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./CreateEmployee.module.css";
 import DateInput from "../components/DateInput/DateInput";
 import DropdownInput from "react-marcat-dropdown/dropdown";
+import { motion, AnimatePresence } from "framer-motion";
+import Modal from "../components/Modal/Modal";
 
 const CreateEmployee = ({ employees }) => {
+  /**
+   * Whether or not the modal is currently open.
+   * @type {boolean}
+   */
+  const [modalOpen, setModalOpen] = useState(false);
+
+  /**
+   * State and department data for a company form.
+   * @typedef {Object} State
+   * @property {string} name - The name of a state in the United States.
+   * @property {string} abbreviation - The two-letter abbreviation for a state in the United States.
+   *
+   * @typedef {Object} Department
+   * @property {string} name - The name of a department in a company.
+   */
+
+  /**
+   * The state data for the United States.
+   * @type {State[]}
+   */
   const states = [
     {
       name: "Alabama",
@@ -243,10 +265,18 @@ const CreateEmployee = ({ employees }) => {
     },
   ];
 
+  /**
+   * The names of the states in the United States.
+   * @type {string[]}
+   */
   const state = states.map((state) => {
     return state.name;
   });
 
+  /**
+   * The department data for a company.
+   * @type {Department[]}
+   */
   const departments = [
     { name: "Sales" },
     { name: "Marketing" },
@@ -255,11 +285,24 @@ const CreateEmployee = ({ employees }) => {
     { name: "Legal" },
   ];
 
+  /**
+   * The names of the departments in a company.
+   * @type {string[]}
+   */
   const department = departments.map((department) => {
     return department.name;
   });
 
+  /**
+   * Handles the submission of the employee form.
+   * Retrieves the form values, creates a new Employee object with these values,
+   * adds the new employee to the employees array and stores the updated array
+   * in localStorage. Finally, updates the state of modalOpen to display a notification.
+   * @function
+   * @returns {void}
+   */
   const handleSubmit = () => {
+    // Retrieves the form values
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
     const birthdate = document.getElementById("birthdate").value;
@@ -269,6 +312,8 @@ const CreateEmployee = ({ employees }) => {
     const state = document.getElementById("state").value;
     const zipcode = document.getElementById("zipcode").value;
     const department = document.getElementById("department").value;
+
+    // Creates a new Employee object with the retrieved values
     let newEmployee = {
       firstname: firstname,
       lastname: lastname,
@@ -280,8 +325,15 @@ const CreateEmployee = ({ employees }) => {
       zipcode: zipcode,
       department: department,
     };
+
+    // Adds the new Employee to the employees array
     employees.push(newEmployee);
+
+    // Stores the updated employees array in localStorage
     localStorage.setItem("employees", JSON.stringify(employees));
+
+    // Updates the state of modalOpen to display a notification
+    setModalOpen(true);
   };
 
   return (
@@ -351,15 +403,29 @@ const CreateEmployee = ({ employees }) => {
               selectBoxOptionsColor="rgba(0,0,0,0.25)"
             />
           </div>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             type="button"
             className={css.button}
             onClick={() => handleSubmit()}
           >
             Save
-          </button>
+          </motion.button>
         </form>
       </div>
+      <AnimatePresence
+        initial={false}
+        mode={"wait"}
+        onExitComplete={() => null}
+      >
+        {modalOpen && (
+          <Modal
+            handleClose={() => setModalOpen(false)}
+            text={`The employee has been created ! `}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 };

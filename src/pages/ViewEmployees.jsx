@@ -3,8 +3,15 @@ import css from "./ViewEmployees.module.css";
 import DataTable from "react-data-table-component";
 
 const ViewEmployees = () => {
+  /**
+   * Retrieves the list of employees from localStorage and parses it into an array of objects.
+   * Defines the columns to display in the table and their respective data selectors.
+   * Defines the custom styles for the table, such as colors for the header and row cells.
+   *
+   * @type {Array<Object>}
+   */
   const employees = JSON.parse(localStorage.getItem("employees"));
-  let columns = [
+  const columns = [
     { name: "First Name", selector: (row) => row.firstname, sortable: true },
     { name: "Last Name", selector: (row) => row.lastname, sortable: true },
     { name: "Start Date", selector: (row) => row.startdate, sortable: true },
@@ -15,6 +22,12 @@ const ViewEmployees = () => {
     { name: "State", selector: (row) => row.state, sortable: true },
     { name: "Zip Code", selector: (row) => row.zipcode, sortable: true },
   ];
+
+  /**
+   * Defines the custom styles for the table.
+   *
+   * @type {Object}
+   */
   const customStyles = {
     headCells: {
       style: {

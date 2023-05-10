@@ -19,11 +19,7 @@ function App() {
             path="/"
             element={<CreateEmployee employees={employees} />}
           />
-          <Route
-            exact
-            path="/view"
-            element={<ViewEmployees employees={employees} />}
-          />
+          <Route exact path="/view" element={<ViewEmployees />} />
         </Routes>
         <Footer />
       </Router>
