@@ -9,6 +9,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const CreateEmployee = ({ employees }) => {
+  /**
+   * Validation schema using Yup for form fields.
+   * Validates the first name, last name, street, city, and zip code fields.
+   *
+   * @constant {Object} schema
+   */
   const schema = yup.object({
     firstname: yup.string().required("Please enter a first name."),
     lastname: yup.string().required("Please enter a last name."),
@@ -17,11 +23,21 @@ const CreateEmployee = ({ employees }) => {
     zipcode: yup.number().required("Please enter a zip code."),
   });
 
+  /**
+   * Form submission handler and form validation using Yup.
+   * Uses the useForm hook from react-hook-form with the yupResolver to validate form data.
+   *
+   * @constant {Object} register - React Hook Form's register function.
+   * @constant {Object} formState - React Hook Form's form state object.
+   * @property {Object} errors - Form validation errors object.
+   * @constant {Function} handleSubmit - Form submission handler.
+   */
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm({ resolver: yupResolver(schema) });
+
   /**
    * Whether or not the modal is currently open.
    * @type {boolean}
