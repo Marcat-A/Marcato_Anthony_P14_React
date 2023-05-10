@@ -16,6 +16,7 @@ const DateInput = ({ name, type }) => {
         placeholderText={name}
         onChange={(newDate) => setDate(newDate)}
         className={css.dateInput}
+        required
       />
     </>
   );

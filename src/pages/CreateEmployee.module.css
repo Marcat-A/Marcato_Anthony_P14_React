@@ -82,6 +82,16 @@
   border: 1px solid var(--primary-color);
 }
 
+.inputBox > p {
+  color: red;
+  display: flex;
+  position: absolute;
+  top: -8px;
+  right: 0;
+  font-size: 0.7em;
+  background-color: #ffffff;
+}
+
 .dateInput {
   width: 100%;
   padding: 10px;

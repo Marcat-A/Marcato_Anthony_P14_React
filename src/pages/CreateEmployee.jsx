@@ -4,8 +4,24 @@ import DateInput from "../components/DateInput/DateInput";
 import DropdownInput from "react-marcat-dropdown/dropdown";
 import { motion, AnimatePresence } from "framer-motion";
 import Modal from "../components/Modal/Modal";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const CreateEmployee = ({ employees }) => {
+  const schema = yup.object({
+    firstname: yup.string().required("Please enter a first name."),
+    lastname: yup.string().required("Please enter a last name."),
+    street: yup.string().required("Please enter a street."),
+    city: yup.string().required("Please enter a city."),
+    zipcode: yup.number().required("Please enter a zip code."),
+  });
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ resolver: yupResolver(schema) });
   /**
    * Whether or not the modal is currently open.
    * @type {boolean}
@@ -301,7 +317,7 @@ const CreateEmployee = ({ employees }) => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const onSubmit = () => {
     // Retrieves the form values
     const firstname = document.getElementById("firstname").value;
     const lastname = document.getElementById("lastname").value;
@@ -340,16 +356,30 @@ const CreateEmployee = ({ employees }) => {
     <main>
       <h1 className={css.title}>Create Employee</h1>
       <div className={css.container}>
-        <form action="" className={css.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
           <h2 className={css.secondTitle}>Employee description</h2>
           <div className={css.firstInputs}>
             <div className={css.inputBox}>
-              <input type="text" name="firstName" required id="firstname" />
+              <input
+                type="text"
+                name="firstName"
+                id="firstname"
+                {...register("firstname")}
+                required
+              />
               <span>First Name</span>
+              {errors.firstname && <p>{errors.firstname?.message}</p>}
             </div>
             <div className={css.inputBox}>
-              <input type="text" name="lastName" required id="lastname" />
+              <input
+                type="text"
+                name="lastName"
+                id="lastname"
+                {...register("lastname")}
+                required
+              />
               <span>Last Name</span>
+              {errors.lastname && <p>{errors.lastname?.message}</p>}
             </div>
             <DateInput name="DATE OF BIRTH" type="birthdate" />
             <DateInput name="START DATE" type="startdate" />
@@ -357,12 +387,26 @@ const CreateEmployee = ({ employees }) => {
           <h2 className={css.secondTitle}>Employee Address</h2>
           <div className={css.secondInputs}>
             <div className={css.inputBox}>
-              <input type="text" name="street" required id="street" />
+              <input
+                type="text"
+                name="street"
+                id="street"
+                {...register("street")}
+                required
+              />
               <span>Street</span>
+              {errors.street && <p>{errors.street?.message}</p>}
             </div>
             <div className={css.inputBox}>
-              <input type="text" name="city" required id="city" />
+              <input
+                type="text"
+                name="city"
+                id="city"
+                {...register("city")}
+                required
+              />
               <span>City</span>
+              {errors.city && <p>{errors.city?.message}</p>}
             </div>
             <DropdownInput
               personnalId="state"
@@ -381,8 +425,15 @@ const CreateEmployee = ({ employees }) => {
               selectBoxOptionsColor="rgba(0,0,0,0.25)"
             />
             <div className={css.inputBox}>
-              <input type="number" name="zipcode" required id="zipcode" />
+              <input
+                type="number"
+                name="zipcode"
+                id="zipcode"
+                {...register("zipcode")}
+                required
+              />
               <span>Zip Code</span>
+              {errors.zipcode && <p>{errors.zipcode?.message}</p>}
             </div>
           </div>
           <h2 className={css.secondTitle}>Department</h2>
@@ -406,9 +457,7 @@ const CreateEmployee = ({ employees }) => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            type="button"
             className={css.button}
-            onClick={() => handleSubmit()}
           >
             Save
           </motion.button>
