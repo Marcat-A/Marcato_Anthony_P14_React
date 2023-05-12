@@ -3,12 +3,19 @@ import css from "./Navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
+/**
+ * Component for the navigation bar.
+ *
+ * @returns {JSX.Element} - The rendered Navbar component.
+ */
 const Navbar = () => {
   const [create, setCreate] = useState(true);
   const [view, setView] = useState(false);
   const [other, setOther] = useState(false);
   const route = useLocation();
+
   useEffect(() => {
+    // Sets the active navigation based on the current route
     if (route.pathname === "/") {
       setCreate(true);
       setView(false);
@@ -23,16 +30,21 @@ const Navbar = () => {
       setView(false);
     }
   }, [route.pathname]);
+
   const links = [
     { id: 1, name: "View Employees", href: "/view" },
     { id: 2, name: "Create Employee", href: "/" },
   ];
+
   return (
     <nav className={css.navbar}>
+      {/* Brand logo */}
       <div className={css.brand}>
-        <img src={logo} alt="Logo de l'entreprise" className={css.logo} />
+        <img src={logo} alt="Company Logo" className={css.logo} />
       </div>
+
       <ul className={css.links}>
+        {/* Conditional rendering of navigation links */}
         {create ? (
           <li className={css.link}>
             <Link to={links[0].href}>{links[0].name}</Link>

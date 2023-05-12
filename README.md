@@ -24,6 +24,7 @@ Make sure you are in the root directory of the HRNET project when executing the 
 - Usage of the "react-data-table-component" component to create a table for employees.
 - Usage of the "react-datepicker" component to retrieve values from date input fields.
 - Usage of the "framer-motion" library to create precise animations for modals.
+- Usage of redux/toolkit && redux-persist for persist datas.
 
 ## Technologies Used
 
@@ -61,6 +62,7 @@ Assurez-vous d'être à la racine du projet HRNET lors de l'exécution des comma
 - Utilisation du composant "react-data-table-component" pour créer un tableau pour les employés.
 - Utilisation du composant "react-datepicker" pour récupérer les valeurs des input type dates.
 - Utilisation de la librairie "framer-motion" pour réaliser la modal pour avoir des animations précises.
+- Utilisation de redux/toolkit && redux/persist pour avoir des données persistantes.
 
 ## Technologies utilisées
 

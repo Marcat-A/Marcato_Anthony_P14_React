@@ -5,15 +5,22 @@ import { useSelector } from "react-redux";
 
 const ViewEmployees = () => {
   /**
-   * Retrieves the list of employees from localStorage and parses it into an array of objects.
-   * Defines the columns to display in the table and their respective data selectors.
-   * Defines the custom styles for the table, such as colors for the header and row cells.
+   * List of employees retrieved from the global state.
    *
-   * @type {Array<Object>}
+   * @type {Array}
    */
-
   const employees = useSelector((state) => state.employees.employees);
 
+  /**
+   * Table columns.
+   *
+   * Each column is represented by an object with the following properties:
+   * - name: The column name.
+   * - selector: The selection function that returns the value of the column for a given row.
+   * - sortable: Indicates whether the column is sortable (true/false).
+   *
+   * @type {Array}
+   */
   const columns = [
     { name: "First Name", selector: (row) => row.firstname, sortable: true },
     { name: "Last Name", selector: (row) => row.lastname, sortable: true },
@@ -45,7 +52,18 @@ const ViewEmployees = () => {
       },
     },
   };
+  /**
+   * List of employees refreshed from the global state.
+   *
+   * @type {Array}
+   */
   const [records, setRecords] = useState(employees);
+
+  /**
+   * Handles the filtering of records based on the provided input value.
+   *
+   * @param {object} e - The event object.
+   */
   const handleFilter = (e) => {
     const newDatas = employees.filter(
       (row) =>

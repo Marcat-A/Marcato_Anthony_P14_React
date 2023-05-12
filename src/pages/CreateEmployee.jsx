@@ -328,26 +328,63 @@ const CreateEmployee = () => {
   });
 
   /**
-   * Handles the submission of the employee form.
-   * Retrieves the form values, creates a new Employee object with these values,
-   * adds the new employee to the employees array and stores the updated array
-   * in localStorage. Finally, updates the state of modalOpen to display a notification.
-   * @function
-   * @returns {void}
+   * Handles the form submission.
+   *
+   * Retrieves the form values and dispatches an action to add a new employee.
+   * Sets the state of `modalOpen` to `true` to display a notification.
    */
   const onSubmit = () => {
     // Retrieves the form values
+    /**
+     * @type {string}
+     */
     const firstname = document.getElementById("firstname").value;
+
+    /**
+     * @type {string}
+     */
     const lastname = document.getElementById("lastname").value;
+
+    /**
+     * @type {string}
+     */
     const birthdate = document.getElementById("birthdate").value;
+
+    /**
+     * @type {string}
+     */
     const startdate = document.getElementById("startdate").value;
+
+    /**
+     * @type {string}
+     */
     const street = document.getElementById("street").value;
+
+    /**
+     * @type {string}
+     */
     const city = document.getElementById("city").value;
+
+    /**
+     * @type {string}
+     */
     const state = document.getElementById("state").value;
+
+    /**
+     * @type {string}
+     */
     const zipcode = document.getElementById("zipcode").value;
+
+    /**
+     * @type {string}
+     */
     const department = document.getElementById("department").value;
 
-    // Creates a new Employee object with the retrieved values
+    /**
+     * Dispatches an action to add a new employee.
+     *
+     * @type {Object}
+     */
     dispatch({
       type: "employees/addEmployee",
       payload: {
@@ -363,11 +400,10 @@ const CreateEmployee = () => {
       },
     });
 
-    // Adds the new Employee to the employees array
-
-    // Stores the updated employees array in localStorage
-
-    // Updates the state of modalOpen to display a notification
+    // Updates the state of `modalOpen` to display a notification
+    /**
+     * @type {boolean}
+     */
     setModalOpen(true);
   };
 
