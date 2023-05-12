@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./ViewEmployees.module.css";
 import DataTable from "react-data-table-component";
 
@@ -42,12 +42,37 @@ const ViewEmployees = () => {
       },
     },
   };
+  const [records, setRecords] = useState(employees);
+  const handleFilter = (e) => {
+    const newDatas = employees.filter(
+      (row) =>
+        row.firstname.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.lastname.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.startdate.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.department.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.birthdate.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.street.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.city.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.state.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.zipcode.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setRecords(newDatas);
+  };
 
   return (
     <main className={css.container}>
+      <div className={css.search}>
+        <input
+          type="text"
+          name="filter"
+          className={css.filter}
+          onChange={handleFilter}
+        />
+        <span>🔎</span>
+      </div>
       <DataTable
         columns={columns}
-        data={employees}
+        data={records}
         pagination
         responsive
         customStyles={customStyles}

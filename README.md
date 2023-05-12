@@ -39,8 +39,6 @@ Anthony Marcato
 
 HRNET est une application développée dans le cadre du Projet 14 d'OpenClassRooms. Elle permet de manipuler le localStorage, de créer des composants réutilisables et d'utiliser des librairies existantes.
 
-D'accord, voici une mise à jour de la section d'installation en tenant compte de l'installation à la racine du projet :
-
 ## Installation
 
 1. Téléchargez ou clonez le repository HRNET sur votre machine locale.

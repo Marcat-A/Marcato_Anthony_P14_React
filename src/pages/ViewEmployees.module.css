@@ -1,0 +1,16 @@
+.filter {
+  display: flex;
+  position: relative;
+  align-self: flex-end;
+  border: 1px solid var(--primary-color);
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
