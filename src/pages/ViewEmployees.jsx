@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import css from "./ViewEmployees.module.css";
 import DataTable from "react-data-table-component";
+import { useSelector } from "react-redux";
 
 const ViewEmployees = () => {
   /**
@@ -10,7 +11,9 @@ const ViewEmployees = () => {
    *
    * @type {Array<Object>}
    */
-  const employees = JSON.parse(localStorage.getItem("employees"));
+
+  const employees = useSelector((state) => state.employees.employees);
+
   const columns = [
     { name: "First Name", selector: (row) => row.firstname, sortable: true },
     { name: "Last Name", selector: (row) => row.lastname, sortable: true },
@@ -66,7 +69,7 @@ const ViewEmployees = () => {
           type="text"
           name="filter"
           className={css.filter}
-          onChange={handleFilter}
+          onChange={() => handleFilter}
         />
         <span>🔎</span>
       </div>

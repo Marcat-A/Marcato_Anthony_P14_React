@@ -7,8 +7,10 @@ import Modal from "../components/Modal/Modal";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
 
-const CreateEmployee = ({ employees }) => {
+const CreateEmployee = () => {
+  const dispatch = useDispatch();
   /**
    * Validation schema using Yup for form fields.
    * Validates the first name, last name, street, city, and zip code fields.
@@ -346,23 +348,24 @@ const CreateEmployee = ({ employees }) => {
     const department = document.getElementById("department").value;
 
     // Creates a new Employee object with the retrieved values
-    let newEmployee = {
-      firstname: firstname,
-      lastname: lastname,
-      birthdate: birthdate,
-      startdate: startdate,
-      street: street,
-      city: city,
-      state: state,
-      zipcode: zipcode,
-      department: department,
-    };
+    dispatch({
+      type: "employees/addEmployee",
+      payload: {
+        firstname,
+        lastname,
+        birthdate,
+        startdate,
+        street,
+        city,
+        state,
+        zipcode,
+        department,
+      },
+    });
 
     // Adds the new Employee to the employees array
-    employees.push(newEmployee);
 
     // Stores the updated employees array in localStorage
-    localStorage.setItem("employees", JSON.stringify(employees));
 
     // Updates the state of modalOpen to display a notification
     setModalOpen(true);
