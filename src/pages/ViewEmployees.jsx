@@ -69,13 +69,13 @@ const ViewEmployees = () => {
       (row) =>
         row.firstname.toLowerCase().includes(e.target.value.toLowerCase()) ||
         row.lastname.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        row.startdate.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.startdate.includes(e.target.value.toLowerCase()) ||
         row.department.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        row.birthdate.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        row.birthdate.includes(e.target.value.toLowerCase()) ||
         row.street.toLowerCase().includes(e.target.value.toLowerCase()) ||
         row.city.toLowerCase().includes(e.target.value.toLowerCase()) ||
         row.state.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        row.zipcode.toLowerCase().includes(e.target.value.toLowerCase())
+        row.zipcode.includes(e.target.value.toLowerCase())
     );
     setRecords(newDatas);
   };
@@ -87,7 +87,7 @@ const ViewEmployees = () => {
           type="text"
           name="filter"
           className={css.filter}
-          onChange={() => handleFilter}
+          onChange={(e) => handleFilter(e)}
         />
         <span>🔎</span>
       </div>

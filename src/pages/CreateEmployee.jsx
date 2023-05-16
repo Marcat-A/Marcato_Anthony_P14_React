@@ -38,6 +38,7 @@ const CreateEmployee = () => {
     register,
     formState: { errors },
     handleSubmit,
+    getValues,
   } = useForm({ resolver: yupResolver(schema) });
 
   /**
@@ -335,21 +336,15 @@ const CreateEmployee = () => {
    */
   const onSubmit = () => {
     // Retrieves the form values
-    /**
-     * @type {string}
-     */
-    const firstname = document.getElementById("firstname").value;
 
     /**
      * @type {string}
      */
-    const lastname = document.getElementById("lastname").value;
-
+    const state = document.getElementById("state").value;
     /**
      * @type {string}
      */
     const birthdate = document.getElementById("birthdate").value;
-
     /**
      * @type {string}
      */
@@ -358,27 +353,12 @@ const CreateEmployee = () => {
     /**
      * @type {string}
      */
-    const street = document.getElementById("street").value;
-
-    /**
-     * @type {string}
-     */
-    const city = document.getElementById("city").value;
-
-    /**
-     * @type {string}
-     */
-    const state = document.getElementById("state").value;
-
-    /**
-     * @type {string}
-     */
-    const zipcode = document.getElementById("zipcode").value;
-
-    /**
-     * @type {string}
-     */
     const department = document.getElementById("department").value;
+
+    /**
+     * @type {Object}
+     */
+    const values = getValues();
 
     /**
      * Dispatches an action to add a new employee.
@@ -388,14 +368,14 @@ const CreateEmployee = () => {
     dispatch({
       type: "employees/addEmployee",
       payload: {
-        firstname,
-        lastname,
+        firstname: values.firstname,
+        lastname: values.lastname,
         birthdate,
         startdate,
-        street,
-        city,
+        street: values.street,
+        city: values.city,
         state,
-        zipcode,
+        zipcode: values.zipcode,
         department,
       },
     });
