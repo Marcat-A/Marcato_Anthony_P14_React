@@ -2,6 +2,12 @@
 
 HRNET is an application developed as part of Project 14 at OpenClassRooms. It allows for manipulation of localStorage, creation of reusable components, and utilization of existing libraries.
 
+## Requirements
+
+Before getting started, make sure you have the following installed:
+
+- Node.js : [Télécharger et installer Node.js](https://nodejs.org) (v15min)
+
 ## Installation
 
 1. Download or clone the HRNET repository to your local machine.
@@ -39,6 +45,12 @@ Anthony Marcato
 # HRNET - Projet 14 OpenClassRooms
 
 HRNET est une application développée dans le cadre du Projet 14 d'OpenClassRooms. Elle permet de manipuler le localStorage, de créer des composants réutilisables et d'utiliser des librairies existantes.
+
+## Prérequis
+
+Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
+
+- Node.js : [Télécharger et installer Node.js](https://nodejs.org) (v15min)
 
 ## Installation
 

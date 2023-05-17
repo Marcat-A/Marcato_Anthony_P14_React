@@ -458,6 +458,7 @@ const CreateEmployee = () => {
               fontSize="1em"
               selectBoxColor="#fff"
               selectBoxOptionsColor="rgba(0,0,0,0.25)"
+              required
             />
             <div className={css.inputBox}>
               <input
@@ -487,6 +488,7 @@ const CreateEmployee = () => {
               borderRadius="5px"
               selectBoxColor="#fff"
               selectBoxOptionsColor="rgba(0,0,0,0.25)"
+              required
             />
           </div>
           <motion.button
